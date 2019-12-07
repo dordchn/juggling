@@ -29,21 +29,19 @@ function createBall(){
   };
 }
 
-function juggleBall(ball){
+async function juggleBall(ball) {
   ball.enabled = true;
-  throwBall(ball, false)
-  .then(()=>slideBallX(ball, PENDING_SHIFT,PENDING_TIME))
-  .then(()=>throwBall(ball, true))
-  .then(()=>slideBallX(ball, -PENDING_SHIFT,PENDING_TIME))
-  .then(() => {
-    if (ball.enabled) {
-      juggleBall(ball);
-    }
-  });
+  await throwBall(ball, false);
+  await slideBallX(ball, PENDING_SHIFT,PENDING_TIME);
+  await throwBall(ball, true);
+  await slideBallX(ball, -PENDING_SHIFT,PENDING_TIME);
+  if (ball.enabled) {
+    juggleBall(ball);
+  }
 }
 
 
-function throwBall(ball, reverseDir){
+function throwBall(ball, reverseDir) {
   ball.vx = reverseDir ? -VX_0 : VX_0;
   ball.vy = VY_0;
   return new Promise((resolve,reject)=>{
