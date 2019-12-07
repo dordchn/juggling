@@ -1,0 +1,24 @@
+
+body {
+  text-align: center;
+}
+
+#container {
+  width: 1000px;
+  height: 600px;
+  margin: auto;
+  background-color: #EEE;
+  position: relative;
+  border: 1px solid black;
+  overflow: hidden;
+}
+
+.ball {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: red;
+  position: absolute;
+  bottom: 50px;
+  left: 600px;
+}
